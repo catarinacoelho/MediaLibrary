@@ -1,9 +1,13 @@
 package com.example.medialibrary;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -25,6 +29,20 @@ public class ImageTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button listButton = (Button) findViewById(R.id.button_list);
+        listButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Button cameraButton = (Button) findViewById(R.id.button_camera);
+        cameraButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
+            }
+        });
+
         GridViewAdapter adapterViewAndroid = new GridViewAdapter(ImageTextActivity.this, gridViewString, gridViewImageId);
         androidGridView=(GridView)findViewById(R.id.gridview);
         androidGridView.setAdapter(adapterViewAndroid);
@@ -36,5 +54,28 @@ public class ImageTextActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /** Check if this device has a camera */
+    private boolean checkCameraHardware(Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
+
+    /** A safe way to get an instance of the Camera object. */
+    public static Camera getCameraInstance(){
+        Camera c = null;
+        try {
+            c = Camera.open(); // attempt to get a Camera instance
+        }
+        catch (Exception e){
+            // Camera is not available (in use or does not exist)
+        }
+        return c; // returns null if camera is unavailable
     }
 }

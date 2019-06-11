@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Media Library</string>
+    <string name="Camera">Camera</string>
+    <string name="list">list</string>
 </resources>
