@@ -1,8 +1,6 @@
 package com.example.medialibrary;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.hardware.Camera;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +30,7 @@ public class ImageTextActivity extends AppCompatActivity {
         Button listButton = (Button) findViewById(R.id.button_list);
         listButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                //TO DO: TRANSFORM GRID TO LIST AND VICE VERSA
                 Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
             }
         });
@@ -39,6 +38,10 @@ public class ImageTextActivity extends AppCompatActivity {
         Button cameraButton = (Button) findViewById(R.id.button_camera);
         cameraButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+
+                Intent intent = new Intent(ImageTextActivity.this, CameraActivity.class);
+                startActivity(intent);
+                //TO DO: OPEN CAMERA ACTIVITY
                 //Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
             }
         });
@@ -54,28 +57,5 @@ public class ImageTextActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    /** Check if this device has a camera */
-    private boolean checkCameraHardware(Context context) {
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
-            // this device has a camera
-            return true;
-        } else {
-            // no camera on this device
-            return false;
-        }
-    }
-
-    /** A safe way to get an instance of the Camera object. */
-    public static Camera getCameraInstance(){
-        Camera c = null;
-        try {
-            c = Camera.open(); // attempt to get a Camera instance
-        }
-        catch (Exception e){
-            // Camera is not available (in use or does not exist)
-        }
-        return c; // returns null if camera is unavailable
     }
 }
