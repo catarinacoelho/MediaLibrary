@@ -27,25 +27,6 @@ public class ImageTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button listButton = (Button) findViewById(R.id.button_list);
-        listButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                //TO DO: TRANSFORM GRID TO LIST AND VICE VERSA
-                Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
-            }
-        });
-
-        Button cameraButton = (Button) findViewById(R.id.button_camera);
-        cameraButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-
-                Intent intent = new Intent(ImageTextActivity.this, CameraActivity.class);
-                startActivity(intent);
-                //TO DO: OPEN CAMERA ACTIVITY
-                //Toast.makeText(ImageTextActivity.this, "BUTTON PRRSSED",Toast.LENGTH_LONG).show();
-            }
-        });
-
         GridViewAdapter adapterViewAndroid = new GridViewAdapter(ImageTextActivity.this, gridViewString, gridViewImageId);
         androidGridView=(GridView)findViewById(R.id.gridview);
         androidGridView.setAdapter(adapterViewAndroid);
