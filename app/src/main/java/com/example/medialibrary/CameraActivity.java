@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +41,7 @@ public class CameraActivity extends Activity {
 
         // Create our Preview view and set it as the content of our activity.
         mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        LinearLayout preview = (LinearLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
 
         Button captureButton = (Button) findViewById(R.id.button_capture);
