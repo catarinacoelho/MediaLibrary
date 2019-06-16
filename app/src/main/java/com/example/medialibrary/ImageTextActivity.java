@@ -38,5 +38,14 @@ public class ImageTextActivity extends AppCompatActivity {
             }
         });
 
+        Button cameraButton = (Button) findViewById(R.id.button_camera);
+        cameraButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+                Intent intent = new Intent(ImageTextActivity.this, CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
