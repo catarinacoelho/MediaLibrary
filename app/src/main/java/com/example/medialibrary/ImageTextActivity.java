@@ -34,7 +34,10 @@ public class ImageTextActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                Toast.makeText(ImageTextActivity.this, "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ImageTextActivity.this, PhotoActivity.class);
+                intent.putExtra("imageurl", gridViewImageId[i]);
+                startActivity(intent);
+                //Toast.makeText(ImageTextActivity.this, "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
             }
         });
 
