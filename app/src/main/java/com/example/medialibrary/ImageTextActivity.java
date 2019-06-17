@@ -35,7 +35,7 @@ public class ImageTextActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent intent = new Intent(ImageTextActivity.this, PhotoActivity.class);
-                intent.putExtra("imageurl", gridViewImageId[i]);
+                intent.putExtra("imageUrl", getViewImageId(i));
                 startActivity(intent);
                 //Toast.makeText(ImageTextActivity.this, "GridView Item: " + gridViewString[+i], Toast.LENGTH_LONG).show();
             }
@@ -50,5 +50,25 @@ public class ImageTextActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public int[] getGridViewImageId() {
+        return gridViewImageId;
+    }
+
+    public void setGridViewImageId(int[] gridViewImageId) {
+        this.gridViewImageId = gridViewImageId;
+    }
+
+    public int getViewImageId(int pos){
+        return gridViewImageId[pos];
+    }
+
+    public String[] getGridViewString() {
+        return gridViewString;
+    }
+
+    public void setGridViewString(String[] gridViewString) {
+        this.gridViewString = gridViewString;
     }
 }

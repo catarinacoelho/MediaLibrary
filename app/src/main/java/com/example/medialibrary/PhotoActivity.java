@@ -18,7 +18,7 @@ public class PhotoActivity extends AppCompatActivity {
         setContentView(R.layout.photo_view);
 
         Intent intent = getIntent();
-        String image_url = intent.getStringExtra("imageurl");
+        String image_url = intent.getStringExtra("imageUrl");
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         Picasso.with(PhotoActivity.this)
